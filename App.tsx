@@ -1,18 +1,15 @@
-import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {StatusBar} from 'react-native';
+import AppNavigation from './src/navigation-stack';
 
 const App = () => {
   return (
-    <View style={style.container}>
-      <Text>SDR NURSE APP</Text>
-    </View>
+  <SafeAreaProvider>
+    <StatusBar translucent backgroundColor={'transparent'} />
+    <AppNavigation/>
+  </SafeAreaProvider>
   )
 }
 
-export default App
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-  }
-})
+export default App;
