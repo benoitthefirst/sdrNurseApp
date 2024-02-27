@@ -9,6 +9,8 @@ type EntryProps = {
   keyboardType?: KeyboardTypeOptions;
   placeholder?: string;
   onChange?: (value: string) => void;
+  rightIcon?: JSX.Element;
+  secureTextEntry?: boolean;
 };
 export default function EnteryInput({
   id,
@@ -17,6 +19,8 @@ export default function EnteryInput({
   keyboardType,
   placeholder,
   onChange,
+  rightIcon,
+  secureTextEntry
 }: EntryProps) {
   return (
     <>
@@ -28,9 +32,11 @@ export default function EnteryInput({
           style={styles.inputText}
           keyboardType={keyboardType}
           inputAccessoryViewID={id}
+          secureTextEntry={secureTextEntry}
           placeholder={placeholder}
           onChangeText={onChange}
         />
+        {rightIcon && rightIcon}        
       </View>
     </>
   );
@@ -47,18 +53,20 @@ const styles = StyleSheet.create({
     lineHeight: verticalScale(20),
     letterSpacing: 0.3,
     marginBottom: verticalScale(8),
-    marginTop: verticalScale(24)
+    marginTop: verticalScale(24),
   },
   inputView: {
     width: '100%',
-    backgroundColor: '#F6F7F8',
+    backgroundColor: '#ffffff',
     borderRadius: moderateScale(16),
     borderWidth: 0.5,
     borderColor: 'lightGrey',
     height: verticalScale(50),
-    justifyContent: 'center',
+    alignItems:'center',
+    justifyContent: 'space-between',
     padding: 0,
     paddingHorizontal: horizontalScale(10),
+    flexDirection:'row',
   },
   inputText: {
     fontFamily: 'Source Sans Pro',

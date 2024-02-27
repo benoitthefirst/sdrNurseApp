@@ -19,7 +19,7 @@ export default AuthHeaderComponent
 
 const styles = StyleSheet.create({
     container: {
-        height: verticalScale(182),
+        height: verticalScale(200),
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#3513DD',

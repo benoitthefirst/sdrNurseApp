@@ -5,6 +5,7 @@ import SignUpScreen from "./views/auth/signup-with-id";
 import ForgotPasswordScreen from "./views/auth/forgot-password";
 import ResetPasswordScreen from "./views/auth/reset-password";
 import LoginScreen from "./views/auth/login-with-id";
+import dashboard from "./views/dashboard/dashboard";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,13 @@ const AppNavigation = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 {isAuthenticated ? (
-                    <></>
+                    <>
+                        <Stack.Screen
+                            name="Dashboard"
+                            component={dashboard}
+                            options={{ headerShown: false }}
+                        />
+                    </>
                 ) : (
                     <>
                         <Stack.Screen
@@ -37,6 +44,11 @@ const AppNavigation = () => {
                         <Stack.Screen
                             name="ResetPassword"
                             component={ResetPasswordScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="Dashboard"
+                            component={dashboard}
                             options={{ headerShown: false }}
                         />
                     </>

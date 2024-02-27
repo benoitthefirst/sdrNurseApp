@@ -86,7 +86,7 @@ const AppButton: React.FC<AppButtonProps> = ({
       onPress={onPress}
       disabled={disabled}>
       {isLoading ? (
-        <ActivityIndicator size="large" color="blue" />
+        <ActivityIndicator size="large" color="white" />
       ) : (
         <>
           {startIcon && (

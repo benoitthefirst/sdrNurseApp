@@ -1,14 +1,29 @@
 import { Alert, SafeAreaView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import AuthHeaderComponent from '../../component/auth-header'
 import AppButton from '../../component/app-button'
 import { moderateScale, verticalScale } from '../../utils/metrics'
 import EnteryInput from '../../component/entry-input'
 import colors from '../../utils/colors'
 
-const ForgotPasswordScreen = ({navigation}:any) => {
+const ForgotPasswordScreen = ({ navigation }: any) => {
+
+    const [id, setId] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const forgotMethod = () => {
+        setLoading(true )
+        setTimeout(() => {
+            setLoading(false)
+            if (id.length >= 0) {
+                navigation.navigate('ResetPassword')
+            } else {
+                Alert.alert('please Enter ID')
+            }
+        }, 2000);
+    }
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
             <AuthHeaderComponent
                 title='Forgot Password'
                 desc='Hii Welcome Back 👋'
@@ -17,10 +32,13 @@ const ForgotPasswordScreen = ({navigation}:any) => {
                 <EnteryInput
                     label='Email/SANC'
                     placeholder='Enter Email/ SANC'
+                    onChange={(text) => setId(text)}
+                    value={id}
                 />
                 <AppButton
                     text={'Confirm'}
-                    onPress={()=>navigation.navigate('ResetPassword')}
+                    isLoading={loading}
+                    onPress={() => forgotMethod()}
                 />
             </View>
         </SafeAreaView>
